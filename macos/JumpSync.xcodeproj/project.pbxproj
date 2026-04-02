@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000010000000000000001 /* JumpSyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000001 /* JumpSyncApp.swift */; };
+		A10000010000000000000002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000002 /* AppState.swift */; };
+		A10000010000000000000003 /* SyncLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000003 /* SyncLogEntry.swift */; };
+		A10000010000000000000004 /* SyncableContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000004 /* SyncableContact.swift */; };
+		A10000010000000000000005 /* SyncableReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000005 /* SyncableReminder.swift */; };
+		A10000010000000000000006 /* SyncableNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000006 /* SyncableNote.swift */; };
+		A10000010000000000000007 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000007 /* SyncState.swift */; };
+		A10000010000000000000008 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000008 /* AppConfiguration.swift */; };
+		A10000010000000000000009 /* MainWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000009 /* MainWindowView.swift */; };
+		A10000010000000000000010 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000010 /* MenuBarView.swift */; };
+		A10000010000000000000011 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000011 /* SummaryView.swift */; };
+		A10000010000000000000012 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000012 /* ConfigurationView.swift */; };
+		A10000010000000000000013 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000013 /* HistoryView.swift */; };
+		A10000010000000000000014 /* CLIRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000014 /* CLIRunner.swift */; };
+		A10000010000000000000015 /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000015 /* ContactsService.swift */; };
+		A10000010000000000000016 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000016 /* RemindersService.swift */; };
+		A10000010000000000000017 /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000017 /* NotesService.swift */; };
+		A10000010000000000000018 /* MarkdownWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000018 /* MarkdownWriter.swift */; };
+		A10000010000000000000019 /* SyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000019 /* SyncCoordinator.swift */; };
+		A10000010000000000000020 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000020 /* APIClient.swift */; };
+		D2816DBB2F7CF494000A40D1 /* SQLiteNotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2816DBA2F7CF494000A40D1 /* SQLiteNotesService.swift */; };
+		D2816DBD2F7DE2BA000A40D1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D253DBF62F7321AF0079D8D9 /* Media.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000010000000000000001 /* JumpSyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpSyncApp.swift; sourceTree = "<group>"; };
+		A20000010000000000000002 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A20000010000000000000003 /* SyncLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogEntry.swift; sourceTree = "<group>"; };
+		A20000010000000000000004 /* SyncableContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableContact.swift; sourceTree = "<group>"; };
+		A20000010000000000000005 /* SyncableReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableReminder.swift; sourceTree = "<group>"; };
+		A20000010000000000000006 /* SyncableNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableNote.swift; sourceTree = "<group>"; };
+		A20000010000000000000007 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
+		A20000010000000000000008 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		A20000010000000000000009 /* MainWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowView.swift; sourceTree = "<group>"; };
+		A20000010000000000000010 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		A20000010000000000000011 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		A20000010000000000000012 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
+		A20000010000000000000013 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A20000010000000000000014 /* CLIRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLIRunner.swift; sourceTree = "<group>"; };
+		A20000010000000000000015 /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
+		A20000010000000000000016 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
+		A20000010000000000000017 /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
+		A20000010000000000000018 /* MarkdownWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownWriter.swift; sourceTree = "<group>"; };
+		A20000010000000000000019 /* SyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncCoordinator.swift; sourceTree = "<group>"; };
+		A20000010000000000000020 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A20000010000000000000021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20000010000000000000022 /* JumpSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpSync.entitlements; sourceTree = "<group>"; };
+		A30000010000000000000001 /* JumpSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D253DBF62F7321AF0079D8D9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		D2816DBA2F7CF494000A40D1 /* SQLiteNotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteNotesService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40000010000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A50000010000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				D253DBF62F7321AF0079D8D9 /* Media.xcassets */,
+				A50000010000000000000002 /* JumpSync */,
+				A50000010000000000000099 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A50000010000000000000002 /* JumpSync */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000001 /* JumpSyncApp.swift */,
+				A20000010000000000000021 /* Info.plist */,
+				A20000010000000000000022 /* JumpSync.entitlements */,
+				A50000010000000000000003 /* Models */,
+				A50000010000000000000004 /* Views */,
+				A50000010000000000000005 /* Services */,
+				A50000010000000000000006 /* Config */,
+			);
+			path = JumpSync;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000002 /* AppState.swift */,
+				A20000010000000000000003 /* SyncLogEntry.swift */,
+				A20000010000000000000004 /* SyncableContact.swift */,
+				A20000010000000000000005 /* SyncableReminder.swift */,
+				A20000010000000000000006 /* SyncableNote.swift */,
+				A20000010000000000000007 /* SyncState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000009 /* MainWindowView.swift */,
+				A20000010000000000000010 /* MenuBarView.swift */,
+				A20000010000000000000011 /* SummaryView.swift */,
+				A20000010000000000000012 /* ConfigurationView.swift */,
+				A20000010000000000000013 /* HistoryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D2816DBA2F7CF494000A40D1 /* SQLiteNotesService.swift */,
+				A20000010000000000000014 /* CLIRunner.swift */,
+				A20000010000000000000015 /* ContactsService.swift */,
+				A20000010000000000000016 /* RemindersService.swift */,
+				A20000010000000000000017 /* NotesService.swift */,
+				A20000010000000000000018 /* MarkdownWriter.swift */,
+				A20000010000000000000019 /* SyncCoordinator.swift */,
+				A20000010000000000000020 /* APIClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000006 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000008 /* AppConfiguration.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		A50000010000000000000099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30000010000000000000001 /* JumpSync.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A60000010000000000000001 /* JumpSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000010000000000000003 /* Build configuration list for PBXNativeTarget "JumpSync" */;
+			buildPhases = (
+				A70000010000000000000001 /* Sources */,
+				A40000010000000000000001 /* Frameworks */,
+				D2816DBC2F7DE2B4000A40D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JumpSync;
+			productName = JumpSync;
+			productReference = A30000010000000000000001 /* JumpSync.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A90000010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					A60000010000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A80000010000000000000001 /* Build configuration list for PBXProject "JumpSync" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A50000010000000000000001;
+			productRefGroup = A50000010000000000000099 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A60000010000000000000001 /* JumpSync */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2816DBC2F7DE2B4000A40D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2816DBD2F7DE2BA000A40D1 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70000010000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000001 /* JumpSyncApp.swift in Sources */,
+				A10000010000000000000002 /* AppState.swift in Sources */,
+				A10000010000000000000003 /* SyncLogEntry.swift in Sources */,
+				A10000010000000000000004 /* SyncableContact.swift in Sources */,
+				A10000010000000000000005 /* SyncableReminder.swift in Sources */,
+				A10000010000000000000006 /* SyncableNote.swift in Sources */,
+				A10000010000000000000007 /* SyncState.swift in Sources */,
+				A10000010000000000000008 /* AppConfiguration.swift in Sources */,
+				A10000010000000000000009 /* MainWindowView.swift in Sources */,
+				A10000010000000000000010 /* MenuBarView.swift in Sources */,
+				A10000010000000000000011 /* SummaryView.swift in Sources */,
+				A10000010000000000000012 /* ConfigurationView.swift in Sources */,
+				D2816DBB2F7CF494000A40D1 /* SQLiteNotesService.swift in Sources */,
+				A10000010000000000000013 /* HistoryView.swift in Sources */,
+				A10000010000000000000014 /* CLIRunner.swift in Sources */,
+				A10000010000000000000015 /* ContactsService.swift in Sources */,
+				A10000010000000000000016 /* RemindersService.swift in Sources */,
+				A10000010000000000000017 /* NotesService.swift in Sources */,
+				A10000010000000000000018 /* MarkdownWriter.swift in Sources */,
+				A10000010000000000000019 /* SyncCoordinator.swift in Sources */,
+				A10000010000000000000020 /* APIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA000001000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2DD63UXKAL;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA000001000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2DD63UXKAL;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AA000001000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				AUTOMATION_APPLE_EVENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = JumpSync/JumpSync.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JumpSync/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JumpSync;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jumpnote.jumpsync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA000001000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				AUTOMATION_APPLE_EVENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = JumpSync/JumpSync.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JumpSync/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JumpSync;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jumpnote.jumpsync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A80000010000000000000001 /* Build configuration list for PBXProject "JumpSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000001000000000000001 /* Debug */,
+				AA000001000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A80000010000000000000003 /* Build configuration list for PBXNativeTarget "JumpSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000001000000000000003 /* Debug */,
+				AA000001000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A90000010000000000000001 /* Project object */;
+}
