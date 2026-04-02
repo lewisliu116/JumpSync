@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpSync | Secure One-Way Sync for AI</title>
+    <meta name="description" content="Securely one-way sync your macOS personal data to power your OpenClaw personal assistant. Absolute privacy with complete system isolation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>JumpSync</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#architecture">Architecture</a>
+                <a href="#features">Data Sources</a>
+                <a href="https://github.com" target="_blank" class="btn btn-secondary">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero slide-up">
+            <div class="hero-content">
+                <div class="badge">Built For OpenClaw AI</div>
+                <h1 class="gradient-text">Your Mac Data, Safely Fueling Your AI.</h1>
+                <p>JumpSync provides a completely secure, <strong>one-way sync</strong> of your macOS personal data to a dedicated safe zone. Empower your personal assistant agent, <em>OpenClaw</em>, with real-time context while maintaining absolute architectural isolation and security for your computer.</p>
+                <div class="hero-actions">
+                    <a href="https://github.com" target="_blank" class="btn btn-primary">
+                        <span>View on GitHub</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual fade-in scroll-reveal">
+                <div class="dashboard-mockup">
+                    <img src="assets/dashboard.png" alt="JumpSync Dashboard" class="app-screenshot">
+                </div>
+                <div class="glow-effect"></div>
+            </div>
+        </section>
+
+        <section id="architecture" class="showcase">
+            <div class="showcase-visual scroll-reveal">
+                <div class="architecture-visual">
+                    <div class="arch-node mac-node">
+                        <div class="arch-icon">💻</div>
+                        <div class="arch-label">Your Mac</div>
+                    </div>
+                    <div class="arch-path path-push">
+                        <div class="data-particle"></div>
+                        <span class="path-label">One-Way Push</span>
+                    </div>
+                    <div class="arch-node vault-node">
+                        <div class="arch-icon">🛡️</div>
+                        <div class="arch-label">Safe Location</div>
+                    </div>
+                    <div class="arch-path path-read">
+                        <div class="data-particle"></div>
+                        <span class="path-label">Read Only</span>
+                    </div>
+                    <div class="arch-node ai-node">
+                        <div class="arch-icon">🧠</div>
+                        <div class="arch-label">OpenClaw Agent</div>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-content scroll-reveal">
+                <h2>Total Isolation via One-Way Sync.</h2>
+                <p>Artificial intelligence assistants require deep personal context to be truly helpful, but granting them full access to your personal file system is a major security risk. JumpSync solves this.</p>
+                <ul class="benefit-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><polyline points="20 6 9 17 4 12"/></svg> 
+                        <span><strong>Strict One-Way Push:</strong> Data flows out of your Mac, never in. Your core system remains untampered.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><polyline points="20 6 9 17 4 12"/></svg> 
+                        <span><strong>Agent Isolation:</strong> OpenClaw consumes from the safe location, ensuring it cannot accidentally delete or alter primary files.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><polyline points="20 6 9 17 4 12"/></svg> 
+                        <span><strong>Granular Control:</strong> Only push exactly the personal data you want the AI to learn from.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="section-heading scroll-reveal">
+                <h2>Curated Context for OpenClaw.</h2>
+                <p>Silently securely parse and push your most critical personal APIs to power your AI's awareness.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="icon-wrapper contacts-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Contacts</h3>
+                    <p>Push your macOS address book so OpenClaw recognizes who you interact with natively, retaining all related properties securely.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal" style="transition-delay: 100ms;">
+                    <div class="icon-wrapper reminders-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Reminders</h3>
+                    <p>Provide your agent a read-only mirror of your pending tasks. Let OpenClaw help schedule your day without write access risks.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal" style="transition-delay: 200ms;">
+                    <div class="icon-wrapper notes-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3>Notes</h3>
+                    <p>Sync your highly-sensitive Apple Notes database into structured Markdown, safely decoupled so your AI can analyze your thoughts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase">
+            <div class="showcase-content scroll-reveal">
+                <h2>Designed for the Menubar.</h2>
+                <p>JumpSync lives quietly as a background daemon accessed via your macOS menubar. Trigger a synchronization push instantly or review connection health to your safe location.</p>
+            </div>
+            <div class="showcase-visual scroll-reveal">
+                <img src="assets/menubar.png" alt="JumpSync Menubar" class="app-screenshot menubar-screenshot">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">JumpSync</div>
+            <p>Bridging macOS and AI thoughtfully through isolation.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> JumpSync Project. Released under MIT License.</p>
+            <div class="footer-links">
+                <a href="https://github.com">GitHub Repository</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

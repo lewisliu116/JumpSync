@@ -73,3 +73,30 @@ uvicorn main:app --reload
 5. Click **Sync Now**! 
    
 You will watch the API payload `PUT` requests dynamically stream into your active Uvicorn terminal as the server begins depositing the raw markdown correctly inside the `MacCloudSync/server/data/` folder hierarchy!
+
+### 4. Updating the Server VM Binary
+
+If you already have an older version of the server running flawlessly in the background on your VM via `systemd` (as described in `server/Packaging.md`), you can push the new nested-folder media codebase to the cloud in 4 steps:
+
+1. **Re-build the package on your Mac:** 
+   ```bash
+   cd server
+   python3 -m build
+   ```
+2. **Copy it over to your VM:** 
+   ```bash
+   gcloud compute scp dist/jumpsync_server-1.0.0-py3-none-any.whl your_username@your-vm-name:~/
+   ```
+3. **SSH into the VM and Install the upgrade:** 
+   ```bash
+   gcloud compute ssh your_username@your-vm-name
+   source ~/venv/bin/activate
+   # Use --force-reinstall to overwrite the old payload with the new nested-folder logic
+   pip install --force-reinstall jumpsync_server-1.0.0-py3-none-any.whl
+   ```
+4. **Restart the systemd Background Service:** 
+   ```bash
+   sudo systemctl restart jumpsync
+   ```
+
+*(For full initial VM deployment and systemd setup instructions, see `server/Packaging.md`)*
