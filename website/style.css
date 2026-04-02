@@ -92,8 +92,11 @@ body {
     letter-spacing: -0.02em;
 }
 
-.logo svg {
-    color: var(--cyan);
+.nav-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -201,6 +204,7 @@ body {
 
 .hero-actions {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 5rem;
 }
@@ -376,7 +380,7 @@ body {
 /* Footer */
 footer {
     border-top: 1px solid var(--border-color);
-    padding: 4rem 2rem 2rem;
+    padding: 2rem;
     margin-top: 4rem;
 }
 
@@ -404,8 +408,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
