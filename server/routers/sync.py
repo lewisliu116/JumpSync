@@ -26,6 +26,14 @@ def sync_contacts(payload: SyncPayloadContact):
         
     return {"status": "success", "written": len(payload.changed)}
 
+@router.get("/reminders")
+def pull_reminders():
+    """Bidirectional pull: return all reminders currently stored on the server
+    (including any server-side edits) so the macOS client can reconcile them
+    back into Apple Reminders via EventKit."""
+    from services.markdown_reader import read_reminders
+    return {"reminders": read_reminders()}
+
 @router.put("/reminders")
 def sync_reminders(payload: SyncPayloadReminder):
     from services.markdown_writer import MarkdownWriter, DATA_DIR, generate_short_id

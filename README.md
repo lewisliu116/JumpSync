@@ -28,6 +28,7 @@ open JumpSync.xcodeproj
 
 - **Local Mode**: Compiles your entire Apple ecosystem into perfect, orphan-managed `.md` files natively isolated in `~/Documents/JumpSync/`.
 - **Remote Mode**: Bypasses local storage and seamlessly streams compressed incremental `SyncPayload` diffs directly to the Python FastAPI server.
+- **Two-Way Reminders** *(Remote Mode)*: Reminders sync bidirectionally. On each cycle the app pulls the server's current state (`GET /api/sync/reminders`) and reconciles it against Apple Reminders via `EventKit` — server-side edits (including brand-new reminders, completions, and deletions) are written back into Apple Reminders, while local changes are still pushed up. Simultaneous edits on both sides are resolved **newest-writer-wins** (Apple's `lastModifiedDate` vs. the server file's mtime). Contacts and Notes remain push-only.
 
 ### Permissions
 
@@ -98,5 +99,13 @@ If you already have an older version of the server running flawlessly in the bac
    ```bash
    sudo systemctl restart jumpsync
    ```
+
+> ⚠️ **If step 3 errors with `required file not found` (broken venv):** the server's `~/venv` is bound to the exact Python interpreter it was created with. If that interpreter is later removed or upgraded incompatibly (e.g. a Homebrew Python that got uninstalled), `pip`/`uvicorn` in the venv stop working and **a restart will take the server down**. Rebuild the venv *at the same path* before restarting (venvs are not relocatable, so create it directly at `~/venv` — don't build elsewhere and `mv`):
+> ```bash
+> mv ~/venv ~/venv.broken && python3 -m venv ~/venv
+> ~/venv/bin/pip install fastapi uvicorn pydantic python-dotenv
+> ~/venv/bin/pip install --force-reinstall --no-deps ~/jumpsync_server-1.0.0-py3-none-any.whl
+> sudo systemctl restart jumpsync
+> ```
 
 *(For full initial VM deployment and systemd setup instructions, see `server/Packaging.md`)*

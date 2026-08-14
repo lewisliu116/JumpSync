@@ -2,7 +2,7 @@ import Foundation
 
 /// Codable reminder model from remindctl JSON output
 struct SyncableReminder: Codable, Identifiable, Hashable {
-    let id: String
+    var id: String
     var title: String
     var notes: String?
     var dueDate: String?
@@ -23,5 +23,17 @@ struct SyncableReminder: Codable, Identifiable, Hashable {
     var contentHash: String {
         let content = "\(title)\(notes ?? "")\(dueDate ?? "")\(priority)\(list)\(isCompleted)\(completionDate ?? "")"
         return content.sha256()
+    }
+
+    /// Canonical content hash used for two-way reconcile. Normalizes whitespace so
+    /// a value that has round-tripped through the server's markdown files hashes
+    /// identically to the live EventKit value. Deliberately excludes `completionDate`
+    /// (derived from `isCompleted`) and `id` (may be reassigned on server-side creation).
+    var syncHash: String {
+        func norm(_ s: String?) -> String {
+            (s ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        let parts = [norm(title), norm(notes), norm(dueDate), "\(priority)", norm(list), "\(isCompleted)"]
+        return parts.joined(separator: "\u{1}").sha256()
     }
 }

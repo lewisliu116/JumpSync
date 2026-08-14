@@ -119,5 +119,24 @@ When you have new code changes and want to update the live server:
 1. Stop the server: `sudo systemctl stop jumpsync` (optional, but good practice).
 2. Re-build the wheel on your Mac: `python3 -m build`
 3. Copy it over: `gcloud compute scp dist/new_version.whl your_username@your-vm-name:~/`
-4. Install it on the VM: `source ~/venv/bin/activate && pip install --upgrade new_version.whl`
+4. Install it on the VM: `~/venv/bin/pip install --force-reinstall --no-deps new_version.whl`
+   *(`--no-deps` skips reinstalling FastAPI/uvicorn/etc; drop it if `requirements` changed. The app `data/` folder is not packaged, so this never touches synced files.)*
 5. Restart the service: `sudo systemctl restart jumpsync`
+6. Verify: `curl -H "Authorization: Bearer $KEY" http://127.0.0.1:<port>/api/health` should return `{"status":"ok"}`.
+
+### Troubleshooting: broken venv (`required file not found`)
+
+The `~/venv` is bound to the **exact Python interpreter** it was created with. If that interpreter is later removed or upgraded incompatibly (e.g. a Homebrew `python@X` that got uninstalled), every `pip`/`python`/`uvicorn` call in the venv fails with `required file not found`, and **restarting the service will bring it down** — a still-running process survives only because it holds the deleted binary in memory.
+
+Rebuild the venv on a stable system Python **at the same path** (keeps the systemd `ExecStart` valid — no unit edit needed). Note venvs are **not relocatable** — the `bin/` launchers hard-code their absolute path, so always `python3 -m venv` directly at `~/venv`; never build elsewhere and `mv` it in.
+
+```bash
+mv ~/venv ~/venv.broken            # running process is unaffected
+python3 -m venv ~/venv             # use the system python3 (stable, not Homebrew)
+~/venv/bin/pip install fastapi uvicorn pydantic python-dotenv
+~/venv/bin/pip install --force-reinstall --no-deps ~/jumpsync_server-1.0.0-py3-none-any.whl
+~/venv/bin/python -c "import main"  # validate imports BEFORE restarting
+sudo systemctl restart jumpsync
+```
+
+> **Note:** other services may share the VM (e.g. a Node app, or another agent with its own venv). Rebuilding `~/venv` and restarting `jumpsync` only affects JumpSync — confirm the others don't reference `~/venv` first, then leave them alone.
