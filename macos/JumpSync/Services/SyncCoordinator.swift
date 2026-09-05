@@ -15,6 +15,16 @@ class SyncCoordinator {
     private var contactsObserver: NSObjectProtocol?
     private var remindersObserver: NSObjectProtocol?
 
+    // Loop protection for the two-way reminders reconcile:
+    // `isReconcilingReminders` prevents overlapping/interleaved runs (the @MainActor
+    // can resume a second call at an await point); `reminderSyncQueued` coalesces a
+    // change that arrives mid-sync into exactly one follow-up run; and
+    // `suppressReminderObserverUntil` ignores the `.EKEventStoreChanged` echo caused
+    // by our own EventKit write-backs. Together they stop the self-sustaining pull loop.
+    private var isReconcilingReminders = false
+    private var reminderSyncQueued = false
+    private var suppressReminderObserverUntil = Date.distantPast
+
     init(appState: AppState) {
         self.appState = appState
         setupScheduledSync()
@@ -59,7 +69,10 @@ class SyncCoordinator {
         remindersObserver = remindersService.observeChanges { [weak self] in
             DispatchQueue.main.async {
                 Task { @MainActor [weak self] in
-                    await self?.syncReminders()
+                    guard let self else { return }
+                    // Ignore change notifications caused by our own write-backs.
+                    if Date() < self.suppressReminderObserverUntil { return }
+                    await self.syncReminders()
                 }
             }
         }
@@ -159,8 +172,18 @@ class SyncCoordinator {
 
     func syncReminders() async {
         guard let appState else { return }
-        appState.reminderStatus = .syncing
 
+        // Re-entrancy guard: if a reconcile is already in flight, note that another
+        // run is wanted and bail. The in-flight run does exactly one follow-up pass
+        // when it finishes. This prevents interleaved runs from racing on the
+        // baseline (`reminderHashes`) and re-applying the same change repeatedly.
+        if isReconcilingReminders {
+            reminderSyncQueued = true
+            return
+        }
+        isReconcilingReminders = true
+
+        appState.reminderStatus = .syncing
         do {
             let reminders = try await remindersService.fetchAllReminders()
             appState.reminderCount = reminders.count
@@ -176,6 +199,20 @@ class SyncCoordinator {
             appState.reminderStatus = .error
             log(.reminders, .error, "Reminders — \(String(describing: error))")
         }
+
+        isReconcilingReminders = false
+
+        // A change arrived while we were syncing — run exactly once more to pick it up.
+        if reminderSyncQueued {
+            reminderSyncQueued = false
+            await syncReminders()
+        }
+    }
+
+    /// Record that we just wrote to EventKit, so the resulting `.EKEventStoreChanged`
+    /// notification is ignored by the observer instead of triggering another reconcile.
+    private func noteReminderWrite() {
+        suppressReminderObserverUntil = Date().addingTimeInterval(4)
     }
 
     /// Local (file-only) reminder sync — unchanged one-way mirror to markdown files.
@@ -328,6 +365,13 @@ class SyncCoordinator {
             case (nil, nil):
                 newBaseline.removeValue(forKey: id)
             }
+        }
+
+        // We wrote to EventKit above; suppress the resulting change notification so it
+        // doesn't trigger another reconcile. Set here (the apply loop above ran with no
+        // awaits, so no echo can have been delivered yet) — before the push's await.
+        if appliedLocal > 0 || deletedLocal > 0 {
+            noteReminderWrite()
         }
 
         if !pushChanged.isEmpty || !pushDeleted.isEmpty {
