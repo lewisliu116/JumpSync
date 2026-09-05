@@ -31,9 +31,10 @@ class RemindersService {
         let calendars = store.calendars(for: .reminder)
         guard !calendars.isEmpty else { return [] }
 
-        // Create a predicate to fetch only INCOMPLETE reminders across all lists
-        // Note: passing nil for both dates fetches all active reminders without date bounds
-        let predicate = store.predicateForIncompleteReminders(withDueDateStarting: nil, ending: nil, calendars: calendars)
+        // Fetch ALL reminders (complete + incomplete) across all lists. Including
+        // completed items is required for two-way sync so completion state can
+        // round-trip instead of a completed reminder looking like a deletion.
+        let predicate = store.predicateForReminders(in: calendars)
 
         return try await withCheckedThrowingContinuation { continuation in
             store.fetchReminders(matching: predicate) { ekReminders in
@@ -57,6 +58,66 @@ class RemindersService {
         ) { _ in
             handler()
         }
+    }
+
+    // MARK: - Write-back (two-way sync)
+
+    /// Create or update a reminder in EventKit from a synced value.
+    /// Returns the resulting `calendarItemIdentifier` — newly assigned by EventKit
+    /// when the item is created, so callers can reconcile server-side placeholder IDs.
+    @discardableResult
+    func applyUpsert(_ r: SyncableReminder) throws -> String {
+        let reminder: EKReminder
+        if let existing = store.calendarItem(withIdentifier: r.id) as? EKReminder {
+            reminder = existing
+        } else {
+            reminder = EKReminder(eventStore: store)
+            reminder.calendar = calendar(forListNamed: r.list)
+        }
+
+        reminder.title = r.title
+        reminder.notes = r.notes
+        if (0...9).contains(r.priority) {
+            reminder.priority = r.priority
+        }
+
+        if let dueStr = r.dueDate, let due = parseDate(dueStr) {
+            reminder.dueDateComponents = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute], from: due)
+        } else {
+            reminder.dueDateComponents = nil
+        }
+
+        // Assigning isCompleted manages completionDate automatically.
+        reminder.isCompleted = r.isCompleted
+
+        try store.save(reminder, commit: true)
+        return reminder.calendarItemIdentifier
+    }
+
+    /// Delete a reminder from EventKit by identifier. No-op if it no longer exists.
+    func applyDelete(id: String) throws {
+        guard let reminder = store.calendarItem(withIdentifier: id) as? EKReminder else { return }
+        try store.remove(reminder, commit: true)
+    }
+
+    private func calendar(forListNamed name: String) -> EKCalendar? {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let match = store.calendars(for: .reminder).first(where: {
+            $0.title.caseInsensitiveCompare(trimmed) == .orderedSame
+        }) {
+            return match
+        }
+        return store.defaultCalendarForNewReminders() ?? store.calendars(for: .reminder).first
+    }
+
+    private func parseDate(_ s: String) -> Date? {
+        let withFractional = ISO8601DateFormatter()
+        withFractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let d = withFractional.date(from: s) { return d }
+        let plain = ISO8601DateFormatter()
+        plain.formatOptions = [.withInternetDateTime]
+        return plain.date(from: s)
     }
 
     // MARK: - Conversion

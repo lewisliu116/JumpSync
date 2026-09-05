@@ -2,10 +2,11 @@ import os
 import uuid
 from dotenv import load_dotenv
 load_dotenv()
-from fastapi import FastAPI, Depends, HTTPException, Security
+from fastapi import FastAPI, Depends, HTTPException, Security, Request
 from fastapi.security import APIKeyHeader
 from routers import sync
 from services.markdown_writer import DATA_DIR
+import time
 
 # Load API Key from environment or generate a dynamic UUID session key
 API_KEY = os.getenv("JUMPSYNC_API_KEY")
@@ -23,6 +24,17 @@ if not API_KEY:
 print("="*60 + "\n")
 
 app = FastAPI(title="MacCloudSync Server")
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    cl = request.headers.get("content-length", "unknown")
+    client_ip = request.client.host if request.client else "unknown"
+    print(f"[HTTP-IN] {request.method} {request.url.path} from {client_ip} (Content-Length: {cl})")
+    t0 = time.time()
+    response = await call_next(request)
+    duration = time.time() - t0
+    print(f"[HTTP-OUT] {request.method} {request.url.path} -> {response.status_code} ({duration:.2f}s)")
+    return response
 
 # Mac App sends its 'API Key' field via standard OAuth 'Bearer' strings
 api_key_header = APIKeyHeader(name="Authorization", auto_error=True)

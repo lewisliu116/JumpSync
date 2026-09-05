@@ -65,6 +65,7 @@ class SQLiteNotesService {
         
         var notes: [SyncableNote] = []
         var skippedCount = 0
+        var skippedAudioCount = 0
 
         for raw in rawNotes {
             if raw.is_password_protected {
@@ -75,6 +76,15 @@ class SQLiteNotesService {
             var parsedAttachments: [SyncableAttachment] = []
             if let atts = raw.attachments {
                 for att in atts {
+                    // Skip audio attachments (e.g. voice-memo recordings). Large audio
+                    // files bloat the base64 sync payload and previously OOM-crashed the
+                    // server, so they are excluded from sync — checked before reading the
+                    // file so it is never loaded into memory or encoded.
+                    if Self.isAudioAttachment(mimeType: att.mime_type, ext: att.file_extension, filename: att.filename) {
+                        skippedAudioCount += 1
+                        continue
+                    }
+
                     // Try to construct standard path and read Base64
                     // apple-notes-parser attachments CLI saves files by their UUID or name. 
                     // Typically it saves them as {uuid}.ext or similar. We should read the mediaDir to find it.
@@ -120,7 +130,29 @@ class SQLiteNotesService {
             notes.append(note)
         }
 
+        if skippedAudioCount > 0 {
+            progress("Skipped \(skippedAudioCount) audio attachment(s) — excluded from sync")
+        }
+
         return (notes, skippedCount)
+    }
+
+    /// Whether an attachment is an audio recording, by MIME type or file extension.
+    /// Audio recordings (voice memos) are excluded from sync to keep the base64
+    /// payload small enough to avoid overloading the server.
+    private static func isAudioAttachment(mimeType: String?, ext: String?, filename: String?) -> Bool {
+        if let m = mimeType?.lowercased(), m.hasPrefix("audio/") { return true }
+        let audioExts: Set<String> = [
+            "mp3", "m4a", "aac", "wav", "wave", "aiff", "aif", "caf",
+            "flac", "ogg", "oga", "opus", "amr", "wma", "alac", "3gp"
+        ]
+        if let e = ext?.lowercased(), audioExts.contains(e) { return true }
+        if let f = filename?.lowercased(),
+           let dotIdx = f.lastIndex(of: "."),
+           audioExts.contains(String(f[f.index(after: dotIdx)...])) {
+            return true
+        }
+        return false
     }
 
     // MARK: - Process Execution
